@@ -8,11 +8,26 @@ var message = document.getElementById("message");
 var day;
 
 submit.addEventListener("click", function() {
-	run();
+	 if (validate() === true) {
+		run();
+	}
 	alert(printout(day));
 });
 
-
+function validate() {
+	if(isNaN(month) || isNaN(year) || isNaN(date)) {
+		alert("Please key in a valid number");
+		return false;
+	} else if(month < 0 || month > 12) {
+		alert("Invalid month");
+		return false;
+	} else if(date < 0)  { 
+		alert("Invalid date");
+		return false;
+	}
+	else 
+		return true;
+}
 
 function run() {
 	var century1 = year.value.substring(0, 2);
